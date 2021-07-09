@@ -76,21 +76,21 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-        try {
-            val account = completedTask.getResult(ApiException::class.java)
+        private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+            try {
+                val account = completedTask.getResult(ApiException::class.java)
 
-            // Signed in successfully, show authenticated UI.
-            updateUI(account)
-        } catch (e: ApiException) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            //Log.w(TAG, "signInResult:failed code=" + e.statusCode)
-            updateUI(null)
+                // Signed in successfully, show authenticated UI.
+                updateUI(account)
+            } catch (e: ApiException) {
+                // The ApiException status code indicates the detailed failure reason.
+                // Please refer to the GoogleSignInStatusCodes class reference for more information.
+                //Log.w(TAG, "signInResult:failed code=" + e.statusCode)
+                updateUI(null)
+            }
+
+
         }
-
-
-    }
 
     private fun updateUI(account: GoogleSignInAccount?) {
         if (account != null) {
